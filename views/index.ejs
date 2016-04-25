@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="metOcean">
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="./javascripts/moment.js"></script>
+  </head>
+  <body>
+
+	<div ng-controller="chartController">
+
+  		<h1><%= title %></h1>
+  		<h4>Welcome! Choose your chart:</h2>
+	   <div flex="100" flex-gt-sm="50" layout="column">
+	      <div check-box>
+	        <fieldset class="standard">
+	          <legend>Using</legend>
+	          <div layout="row" layout-wrap="" flex="">
+	            <div ng-repeat="item in choose" class="standard" flex="50">
+	              <label>
+	                <input type="checkbox" ng-checked="exists(item, selectedValue)" ng-click="toggle(item, selectedValue)" value="selectioned">
+	                {{ item }}
+	              </label>
+	            </div>
+	          </div>
+	        </fieldset>
+	      </div>
+	    </div>
+
+	  <h1>Today's Chart <strong>{{choose[2]}}</strong></h1>
+	  <div linear-chart chart-data="chartData" value="selectioned"></div>
+	</div>
+
+
+
+	<script src="./javascripts/chartController.js"></script>
+  </body>
+</html>
